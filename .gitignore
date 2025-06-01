@@ -1,0 +1,6 @@
+# Ignore all Terraform configuration files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.terraform.lock.hcl
+.terragrunt-cache/
