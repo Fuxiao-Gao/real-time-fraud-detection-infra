@@ -31,17 +31,9 @@ jobs:
           aws-region: us-east-1
       
       - name: Initialize terragrunt
-        run: terragrunt init
-
-      - name: Initialize all modules
         run: |
-          for module in cloudwatch_dashboard ecr_ecs ecr_lambda ecs_cluster ecs_processor glue_table kinesis_firehose kinesis_tagged kinesis_untagged lambda s3_bucket sagemaker_media sagemaker_text vpc; do
-            echo "Initializing $module"
-            cd live/dev/$module
-            terragrunt init --terragrunt-non-interactive
-            terragrunt output
-            cd -
-          done
+          terragrunt init
+          terragrunt run-all init
 
       - name: Destroy Lambda
         run: |
