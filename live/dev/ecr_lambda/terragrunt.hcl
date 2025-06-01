@@ -13,6 +13,7 @@ terraform {
 inputs = {
     repository_name = local.env_vars.locals.lambda_processor_repository
     repository_image_tag_mutability = "MUTABLE"
+    force_delete = true
 
     repository_lifecycle_policy = jsonencode({
       rules = [
