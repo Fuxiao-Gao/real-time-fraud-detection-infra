@@ -10,6 +10,10 @@ terraform {
   source = "../../../modules/sagemaker_endpoint" 
 }
 
+dependency "s3_bucket" {
+  config_path = "../s3_bucket"
+}
+
 inputs = {
   sagemaker_execution_role_name = "text-model-execution-role"
   sagemaker_policy_name         = "text-model-policy"
