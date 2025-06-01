@@ -7,6 +7,10 @@ on:
         description: 'Destroy S3 Bucket?'
         required: true
         default: 'false'
+      destroy_ecr:
+        description: 'Destroy ECR Repositories?'
+        required: true
+        default: 'false'
 
 jobs:
   destroy-iac:
@@ -99,21 +103,23 @@ jobs:
           terragrunt destroy --auto-approve --non-interactive
 
       - name: Destroy ECR Lambda
+        if: ${{ inputs.destroy_ecr == 'true' }}
         run: |
+          echo "destroy_ecr=${{ inputs.destroy_ecr }}"
           cd live/dev/ecr_lambda
           terragrunt destroy --auto-approve --non-interactive
 
       - name: Destroy ECR ECS
+        if: ${{ inputs.destroy_ecr == 'true' }}
         run: |
+          echo "destroy_ecr=${{ inputs.destroy_ecr }}"
           cd live/dev/ecr_ecs
           terragrunt destroy --auto-approve --non-interactive
-
-      - name: Check if s3 bucket should be destroyed
-        run: echo "destroy_s3=${{ inputs.destroy_s3 }}"
 
       - name: Destroy S3 Bucket
         if: ${{ inputs.destroy_s3 == 'true' }}
         run: |
+          echo "destroy_s3=${{ inputs.destroy_s3 }}"
           cd live/dev/s3_bucket
           terragrunt destroy --auto-approve --non-interactive
 
