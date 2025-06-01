@@ -69,7 +69,7 @@ inputs = {
     {
       name      = local.env_vars.locals.ecs_service_name
       essential = true
-      image     = "${dependency.ecr_ecs.outputs.repository_url}:$(local.env_vars.locals.version)"
+      image     = "${dependency.ecr_ecs.outputs.repository_url}:${local.env_vars.locals.image_tag}"
       
       # create cloudwatch log group
       create_cloudwatch_log_group = true

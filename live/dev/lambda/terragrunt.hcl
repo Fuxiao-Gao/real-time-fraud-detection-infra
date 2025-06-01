@@ -44,7 +44,7 @@ inputs = {
   
   # Docker image configuration
   package_type  = "Image"
-  image_uri     = "${dependency.ecr_lambda.outputs.repository_url}:${local.env_vars.locals.version}" 
+  image_uri     = "${dependency.ecr_lambda.outputs.repository_url}:${local.env_vars.locals.image_tag}" 
   cloudwatch_logs_retention_in_days = 1
   
   # Lambda settings

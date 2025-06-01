@@ -6,12 +6,6 @@ locals {
   env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 }
 
-dependencies {
-  paths = [
-    "../s3_bucket",
-  ]
-}
-
 dependency "s3_bucket" {
   config_path = "../s3_bucket"
 }

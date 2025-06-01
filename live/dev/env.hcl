@@ -33,7 +33,10 @@ locals {
   # Docker image specifications
   ecs_processor_repository      = "${local.prefix}-ecs-processor-repository"
   lambda_processor_repository   = "${local.prefix}-lambda-processor-repository"
-  version                       = "v1.0.0"
+  image_tag                     = get_env("IMAGE_TAG", "")
+  image_tag_non_empty = (
+    length(local.image_tag) > 0
+  ) ? local.image_tag : error("IMAGE_TAG environment variable is required but not set!")
 
   # sagemaker settings
   sagemaker_text_repository_url       = "763104351884.dkr.ecr.us-east-1.amazonaws.com/huggingface-pytorch-inference:2.1.0-transformers4.37.0-cpu-py310-ubuntu22.04"
