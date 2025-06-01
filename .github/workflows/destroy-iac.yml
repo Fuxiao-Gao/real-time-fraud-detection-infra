@@ -39,7 +39,7 @@ jobs:
             echo "Initializing $module"
             cd live/dev/$module
             terragrunt init --terragrunt-non-interactive
-            terragrunt outputs
+            terragrunt output
             cd -
           done
 
