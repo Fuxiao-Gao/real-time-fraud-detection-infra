@@ -6,12 +6,12 @@ locals {
   env_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 }
 
-terraform {
-  source = "../../../modules/sagemaker_endpoint" 
-}
-
 dependency "s3_bucket" {
   config_path = "../s3_bucket"
+}
+
+terraform {
+  source = "../../../modules/sagemaker_endpoint" 
 }
 
 inputs = {
