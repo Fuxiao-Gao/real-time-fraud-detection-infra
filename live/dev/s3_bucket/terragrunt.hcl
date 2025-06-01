@@ -12,6 +12,7 @@ terraform {
 
 inputs = {
   bucket_prefix = local.env_vars.locals.prefix
+  force_destroy = true
   
   versioning = {
     status = "Suspended"
