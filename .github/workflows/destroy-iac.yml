@@ -33,11 +33,11 @@ jobs:
       - name: Initialize terragrunt
         run: |
           terragrunt init
+          cd live/dev/vpc && terragrunt apply --auto-approve
       
       - name: Initialize each module
         run: |
-          cd live/dev/vpc && terragrunt init
-          cd ../s3_bucket && terragrunt init
+          cd live/dev/s3_bucket && terragrunt init
           cd ../ecr_ecs && terragrunt init
           cd ../ecr_lambda && terragrunt init
           cd ../kinesis_untagged && terragrunt init
