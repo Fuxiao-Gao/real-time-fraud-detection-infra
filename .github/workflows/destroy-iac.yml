@@ -33,7 +33,23 @@ jobs:
       - name: Initialize terragrunt
         run: |
           terragrunt init
-          terragrunt run-all init
+      
+      - name: Initialize each module
+        run: |
+          cd live/dev/vpc && terragrunt init
+          cd ../s3_bucket && terragrunt init
+          cd ../ecr_ecs && terragrunt init
+          cd ../ecr_lambda && terragrunt init
+          cd ../kinesis_untagged && terragrunt init
+          cd ../kinesis_tagged && terragrunt init
+          cd ../glue_table && terragrunt init
+          cd ../cloudwatch_dashboard && terragrunt init
+          cd ../kinesis_firehose && terragrunt init
+          cd ../sagemaker_media && terragrunt init
+          cd ../sagemaker_text && terragrunt init
+          cd ../ecs_cluster && terragrunt init
+          cd ../ecs_processor && terragrunt init
+          cd ../lambda && terragrunt init
 
       - name: Destroy Lambda
         run: |
