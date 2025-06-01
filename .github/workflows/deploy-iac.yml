@@ -1,0 +1,100 @@
+name: Deploy the IaC in AWS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-iac:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine/terragrunt:latest
+      options: --entrypoint /bin/bash
+    
+    env:
+      IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      
+      - name: Initialize terragrunt
+        run: terragrunt init
+
+      - name: Deploy VPC
+        run: |
+          cd live/dev/vpc
+          terragrunt apply --auto-approve
+
+      - name: Deploy S3 Bucket
+        run: |
+          cd live/dev/s3_bucket
+          terragrunt apply --auto-approve
+
+      - name: Deploy ECR ECS
+        run: |
+          cd live/dev/ecr_ecs
+          terragrunt apply --auto-approve
+
+      - name: Deploy ECR Lambda
+        run: |
+          cd live/dev/ecr_lambda
+          terragrunt apply --auto-approve
+
+      - name: Deploy Kinesis Untagged
+        run: |
+          cd live/dev/kinesis_untagged
+          terragrunt apply --auto-approve
+
+      - name: Deploy Kinesis Tagged
+        run: |
+          cd live/dev/kinesis_tagged
+          terragrunt apply --auto-approve
+
+      - name: Deploy Glue Table
+        run: |
+          cd live/dev/glue_table
+          terragrunt apply --auto-approve
+
+      - name: Deploy CloudWatch Dashboard
+        run: |
+          cd live/dev/cloudwatch_dashboard
+          terragrunt apply --auto-approve
+
+      - name: Deploy Kinesis Firehose
+        run: |
+          cd live/dev/kinesis_firehose
+          terragrunt apply --auto-approve
+
+      - name: Deploy SageMaker Media
+        run: |
+          cd live/dev/sagemaker_media
+          terragrunt apply --auto-approve
+
+      - name: Deploy SageMaker Text
+        run: |
+          cd live/dev/sagemaker_text
+          terragrunt apply --auto-approve
+
+      - name: Deploy ECS Cluster
+        run: |
+          cd live/dev/ecs_cluster
+          terragrunt apply --auto-approve
+
+      - name: Deploy ECS Processor
+        run: |
+          cd live/dev/ecs_processor
+          terragrunt apply --auto-approve
+
+      - name: Deploy Lambda
+        run: |
+          cd live/dev/lambda
+          terragrunt apply --auto-approve
+      
