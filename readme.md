@@ -1,8 +1,8 @@
 # Real-Time Fraud Detection Dashboard
 
-This repository contains the **infrastructure-as-code (IaC)** for a real-time fraud detection pipeline built on **AWS**, designed to simulate real-world scenarios by ingesting live social media data from Bluesky.
+This repository contains the **infrastructure-as-code (IaC)** for a real-time fraud detection dashboard built on **AWS**, designed to simulate real-world scenarios by ingesting live social media data from Bluesky. It also includes the CI/CD pipelines to automate the creation and teardown of the entire infrastructure.
 
-> **Note:** This repository includes only the Terraform and Terragrunt code for provisioning the infrastructure. The actual data processing scripts, SageMaker inference logic, and image automation pipeline are located in a separate repository .
+> **Note:** This repository contains only the Terraform and Terragrunt code used for provisioning the infrastructure. The data processing scripts, SageMaker inference logic, and image build and deployment automation pipelines are maintained in a separate repository.
 
 ---
 
@@ -31,43 +31,8 @@ This repository contains the **infrastructure-as-code (IaC)** for a real-time fr
 Dashboard view of 10% data streaming (for testing purpose)
 ![Alt text](resources/dashboard-sample-test-10.png)
 
-## Repository Structure
-
-This repository includes:
-
-- Terragrunt-based IaC modules for:
-  - VPC, Lambda, ECS, ECR, S3, Kinesis, Firehose, Glue, CloudWatch, and SageMakers
-- Environments structured under `live/dev/`
-- CI/CD automation via GitHub Actions (workflow files)
-
----
-
-## Sensitive Information and Workflow Logs
-
-- GitHub Actions workflows were intentionally **deleted after execution**. This is due to the possibility of **Terragrunt outputs exposing sensitive information** such as:
-  - AWS Account ID
-  - Resource ARNs (e.g., S3 buckets, Lambda functions)
-
-While GitHub Actions provides masking capabilities, logs can still unintentionally reveal details through AWS error messages or infrastructure outputs.
-
----
-
-## Decoupled Design: Infrastructure vs. Application Logic
-
-This repo contains only the infrastructure code, while the application code is stored in a separate repository.
-
-I chose to separate the infrastructure code from the application logic because it’s a best practice that improves maintainability and security. Keeping them apart makes testing and development simpler by isolating responsibilities, and it also allows the infrastructure to be reused across different projects
-
----
-
-##  Requirements
-
-- Terraform v1.12.1+
-- Terragrunt v0.78+
-- AWS CLI with appropriate IAM permissions
-
 ---
 
 ## Usage
-- To deploy the infra, run Deploy the IaC in AWS workflow and configure proper secrets.
-- To destroy the infra, run Destroy the IaC in AWS workflow and configure proper secrets.
+- To deploy the infra, run Deploy the IaC in AWS workflow
+- To destroy the infra, run Destroy the IaC in AWS workflow

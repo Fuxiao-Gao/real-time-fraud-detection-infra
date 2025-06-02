@@ -50,7 +50,7 @@ inputs = {
   
   # Lambda settings
   memory_size = 512
-  timeout     = 150
+  timeout     = 120
   
   # Environment variables
   environment_variables = {
@@ -117,7 +117,7 @@ inputs = {
     kinesis = {
       event_source_arn  = dependency.kinesis_untagged.outputs.stream_arn
       starting_position = "LATEST"
-      batch_size        = 5
+      batch_size        = 10
       parallelization_factor = 10
       maximum_batching_window_in_seconds = 5
       maximum_retry_attempts = 0
