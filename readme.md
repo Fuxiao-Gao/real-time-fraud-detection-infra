@@ -26,10 +26,7 @@ This repository contains the **infrastructure-as-code (IaC)** for a real-time fr
 ---
 
 ## Example Dashboard Views
-![Alt text](resources/dashboard-sample.png)
-
-Dashboard view of 10% data streaming (for testing purpose)
-![Alt text](resources/dashboard-sample-test-10.png)
+![Alt text](resources/dashboard-test.png)
 
 ---
 
