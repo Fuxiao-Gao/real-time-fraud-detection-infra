@@ -46,6 +46,7 @@ inputs = {
   package_type  = "Image"
   image_uri     = "${dependency.ecr_lambda.outputs.repository_url}:${local.env_vars.locals.image_tag}" 
   cloudwatch_logs_retention_in_days = 1
+  skip_destroy  = false
   
   # Lambda settings
   memory_size = 512
