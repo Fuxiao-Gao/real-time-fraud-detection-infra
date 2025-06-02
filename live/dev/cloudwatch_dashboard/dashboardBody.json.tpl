@@ -27,11 +27,11 @@
                 "stacked": false,
                 "region": "us-east-1",
                 "title": "RawMetrics",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "yAxis": {
                     "left": {
-                        "label": "1 minute sum",
+                        "label": "1 second sum",
                         "showUnits": false
                     }
                 }
@@ -64,7 +64,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "FraudRatioStacked",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "yAxis": {
                     "left": {
@@ -101,7 +101,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "FraudRatioValues",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum"
             }
         },
@@ -132,7 +132,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "FraudPostsPie",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
@@ -167,7 +167,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "AllStacked",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
@@ -175,7 +175,7 @@
                 },
                 "yAxis": {
                     "left": {
-                        "label": "1 minute sum",
+                        "label": "1 second sum",
                         "showUnits": false
                     }
                 }
@@ -190,15 +190,15 @@
             "properties": {
                 "metrics": [
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1" } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 60 } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 1 } ],
                     [ "${namespace}", "Post-Fraud-Both", { "region": "us-east-1", "id": "m4", "color": "#7f7f7f" } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 60 } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 60 } ],
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 60 } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 60 } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 60 } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 60 } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 60 } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 1 } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 1 } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 1 } ],
                     [ "${namespace}", "Post-Text-Only", { "region": "us-east-1", "id": "m2", "visible": false } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
                     [ ".", "Post-Fraud-Media", { "region": "us-east-1", "id": "m5", "visible": false } ],
@@ -208,7 +208,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "Values",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
@@ -245,7 +245,7 @@
                 "stacked": false,
                 "region": "us-east-1",
                 "title": "FraudRatio",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "yAxis": {
                     "left": {
@@ -282,7 +282,7 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "TextOnlyRatio",
-                "period": 60,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
