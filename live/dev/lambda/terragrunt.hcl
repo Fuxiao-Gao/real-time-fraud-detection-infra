@@ -117,8 +117,8 @@ inputs = {
     kinesis = {
       event_source_arn  = dependency.kinesis_untagged.outputs.stream_arn
       starting_position = "LATEST"
-      batch_size        = 8
-      parallelization_factor = 5
+      batch_size        = 3
+      parallelization_factor = 10
       maximum_batching_window_in_seconds = 5
       maximum_retry_attempts = 0
     }
