@@ -46,10 +46,6 @@ locals {
   # Container specifications
   fargate_cpu        = 512
   fargate_memory     = 1024
-  
-  # Lambda settings
-  lambda_memory_size = 512
-  lambda_timeout     = 300
 
   # glue database name
   glue_database_name = "${local.prefix}-glue-database"
