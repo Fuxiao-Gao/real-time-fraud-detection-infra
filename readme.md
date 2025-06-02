@@ -26,7 +26,14 @@ This repository contains the **infrastructure-as-code (IaC)** for a real-time fr
 ---
 
 ## Example Dashboard Views
-![Alt text](resources/dashboard-test.png)
+Dashboard view for the past 1 min
+![Alt text](resources/dashboard-sample-1min.png)
+
+Dashboard view for the past 5 min
+![Alt text](resources/dashboard-sample-5min.png)
+
+Dashboard view for the past 10 min
+![Alt text](resources/dashboard-sample-10min.png)
 
 ---
 
