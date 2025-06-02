@@ -16,7 +16,7 @@ locals {
   kinesis_tagged   = "${local.prefix}-tagged-stream"
 
   # shard counts
-  kinesis_untagged_shard_count = 10
+  kinesis_untagged_shard_count = 15
   kinesis_tagged_shard_count   = 1
 
   # Lambda function names
