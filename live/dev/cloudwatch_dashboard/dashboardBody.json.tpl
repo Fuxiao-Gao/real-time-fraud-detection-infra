@@ -34,7 +34,8 @@
                         "label": "1 second sum",
                         "showUnits": false
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
@@ -71,7 +72,8 @@
                         "label": "Percentage",
                         "showUnits": false
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
@@ -82,14 +84,14 @@
             "type": "metric",
             "properties": {
                 "metrics": [
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "period": 300 } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "period": 300 } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "period": 300 } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 300 } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "period": 1 } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "period": 1 } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "period": 1 } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 1 } ],
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1", "visible": false } ],
                     [ ".", "Post-Text-Only", { "region": "us-east-1", "id": "m2", "visible": false } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
@@ -101,8 +103,11 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "FraudRatioValues",
-                "period": 300,
-                "stat": "Sum"
+                "period": 1,
+                "stat": "Sum",
+                "setPeriodToTimeRange": true,
+                "sparkline": false,
+                "liveData": true
             }
         },
         {
@@ -114,14 +119,14 @@
             "properties": {
                 "metrics": [
                     [ "${namespace}", "Post-Fraud-Both", { "region": "us-east-1", "id": "m4", "color": "#7f7f7f" } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 300 } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 300 } ],
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 300 } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 300 } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e" } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728" } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c" } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false } ],
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1", "visible": false } ],
                     [ ".", "Post-Text-Only", { "region": "us-east-1", "id": "m2", "visible": false } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
@@ -132,12 +137,13 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "FraudPostsPie",
-                "period": 300,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
                     "visible": true
-                }
+                },
+                "liveData": true
             }
         },
         {
@@ -178,7 +184,8 @@
                         "label": "1 second sum",
                         "showUnits": false
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
@@ -190,15 +197,15 @@
             "properties": {
                 "metrics": [
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1" } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 300 } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 1 } ],
                     [ "${namespace}", "Post-Fraud-Both", { "region": "us-east-1", "id": "m4", "color": "#7f7f7f" } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 300 } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 300 } ],
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 300 } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 1 } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 1 } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 1 } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 1 } ],
                     [ "${namespace}", "Post-Text-Only", { "region": "us-east-1", "id": "m2", "visible": false } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
                     [ ".", "Post-Fraud-Media", { "region": "us-east-1", "id": "m5", "visible": false } ],
@@ -208,13 +215,14 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "Values",
-                "period": 300,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
                     "visible": true
                 },
-                "sparkline": false
+                "sparkline": false,
+                "liveData": true
             }
         },
         {
@@ -252,7 +260,8 @@
                         "label": "Percentage",
                         "showUnits": false
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
@@ -264,14 +273,14 @@
             "properties": {
                 "metrics": [
                     [ "${namespace}", "Post-Fraud-Both", { "region": "us-east-1", "id": "m4", "color": "#7f7f7f", "visible": false } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 300 } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 300 } ],
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "color": "#8c564b", "period": 300 } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 300 } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 300 } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "visible": false } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "visible": false } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "color": "#8c564b" } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "visible": false } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false } ],
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1", "visible": false } ],
                     [ ".", "Post-Text-Only", { "region": "us-east-1", "id": "m2" } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
@@ -282,12 +291,13 @@
                 "stacked": true,
                 "region": "us-east-1",
                 "title": "TextOnlyRatio",
-                "period": 300,
+                "period": 1,
                 "stat": "Sum",
                 "setPeriodToTimeRange": true,
                 "labels": {
                     "visible": true
-                }
+                },
+                "liveData": true
             }
         }
     ]
