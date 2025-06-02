@@ -62,8 +62,8 @@ I chose to separate the infrastructure code from the application logic because i
 
 ##  Requirements
 
-- Terraform 1.5+
-- Terragrunt 0.48+
+- Terraform v1.12.1+
+- Terragrunt v0.78+
 - AWS CLI with appropriate IAM permissions
 
 ---
