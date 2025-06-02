@@ -2,9 +2,9 @@
     "widgets": [
         {
             "height": 10,
-            "width": 7,
+            "width": 9,
             "y": 10,
-            "x": 13,
+            "x": 14,
             "type": "metric",
             "properties": {
                 "metrics": [
@@ -28,7 +28,13 @@
                 "region": "us-east-1",
                 "title": "RawMetrics",
                 "period": 60,
-                "stat": "Sum"
+                "stat": "Sum",
+                "yAxis": {
+                    "left": {
+                        "label": "1 minute sum",
+                        "showUnits": false
+                    }
+                }
             }
         },
         {
@@ -59,7 +65,13 @@
                 "region": "us-east-1",
                 "title": "FraudRatioStacked",
                 "period": 60,
-                "stat": "Sum"
+                "stat": "Sum",
+                "yAxis": {
+                    "left": {
+                        "label": "Percentage",
+                        "showUnits": false
+                    }
+                }
             }
         },
         {
@@ -88,14 +100,14 @@
                 "view": "singleValue",
                 "stacked": true,
                 "region": "us-east-1",
-                "title": "FraudRatioStacked",
+                "title": "FraudRatioValues",
                 "period": 60,
                 "stat": "Sum"
             }
         },
         {
             "height": 10,
-            "width": 5,
+            "width": 6,
             "y": 0,
             "x": 8,
             "type": "metric",
@@ -132,7 +144,7 @@
             "height": 10,
             "width": 5,
             "y": 0,
-            "x": 13,
+            "x": 14,
             "type": "metric",
             "properties": {
                 "metrics": [
@@ -160,27 +172,33 @@
                 "setPeriodToTimeRange": true,
                 "labels": {
                     "visible": true
+                },
+                "yAxis": {
+                    "left": {
+                        "label": "1 minute sum",
+                        "showUnits": false
+                    }
                 }
             }
         },
         {
             "height": 10,
-            "width": 2,
+            "width": 4,
             "y": 0,
-            "x": 18,
+            "x": 19,
             "type": "metric",
             "properties": {
                 "metrics": [
                     [ "${namespace}", "Post-Processed", { "region": "us-east-1", "id": "m1" } ],
-                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c" } ],
+                    [ { "expression": "m1 - m3", "label": "Post-Not-Fraud", "id": "e2", "region": "us-east-1", "color": "#2ca02c", "period": 60 } ],
                     [ "${namespace}", "Post-Fraud-Both", { "region": "us-east-1", "id": "m4", "color": "#7f7f7f" } ],
-                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e" } ],
-                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728" } ],
-                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false } ],
-                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false } ],
-                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false } ],
-                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false } ],
-                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false } ],
+                    [ { "expression": "m5 - m4", "label": "Post-Fraud-Media-Only", "id": "e3", "region": "us-east-1", "color": "#ff7f0e", "period": 60 } ],
+                    [ { "expression": "m6 - m4", "label": "Post-Fraud-Text-Only", "id": "e4", "region": "us-east-1", "color": "#d62728", "period": 60 } ],
+                    [ { "expression": "m1 - m2", "label": "Post-With-Media", "id": "e1", "region": "us-east-1", "visible": false, "period": 60 } ],
+                    [ { "expression": "100 * m4 / m1", "label": "% Fraud-Both", "id": "e5", "region": "us-east-1", "color": "#7f7f7f", "visible": false, "period": 60 } ],
+                    [ { "expression": "100 * e3 / m1", "label": "% Fraud-Media-Only", "id": "e6", "region": "us-east-1", "color": "#d62728", "visible": false, "period": 60 } ],
+                    [ { "expression": "100 * e4 / m1", "label": "% Fraud-Text-Only", "id": "e7", "region": "us-east-1", "color": "#ff7f0e", "visible": false, "period": 60 } ],
+                    [ { "expression": "100 * e3 / e1", "label": "% Fraud-Media-In-Post-With-Media", "id": "e8", "region": "us-east-1", "visible": false, "period": 60 } ],
                     [ "${namespace}", "Post-Text-Only", { "region": "us-east-1", "id": "m2", "visible": false } ],
                     [ ".", "Post-Is-Fraud", { "region": "us-east-1", "id": "m3", "visible": false } ],
                     [ ".", "Post-Fraud-Media", { "region": "us-east-1", "id": "m5", "visible": false } ],
@@ -195,7 +213,8 @@
                 "setPeriodToTimeRange": true,
                 "labels": {
                     "visible": true
-                }
+                },
+                "sparkline": false
             }
         },
         {
@@ -225,14 +244,20 @@
                 "view": "timeSeries",
                 "stacked": false,
                 "region": "us-east-1",
-                "title": "FraudRatioStacked",
+                "title": "FraudRatio",
                 "period": 60,
-                "stat": "Sum"
+                "stat": "Sum",
+                "yAxis": {
+                    "left": {
+                        "label": "Percentage",
+                        "showUnits": false
+                    }
+                }
             }
         },
         {
             "height": 10,
-            "width": 5,
+            "width": 6,
             "y": 10,
             "x": 8,
             "type": "metric",
