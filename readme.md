@@ -1,27 +1,27 @@
 # Real-Time Fraud Detection Dashboard
 
-This repository contains the **infrastructure-as-code (IaC)** for a real-time fraud detection pipeline built on **AWS**, designed to simulate real-world scenarios by ingesting live social media data from **Bluesky**.
+This repository contains the **infrastructure-as-code (IaC)** for a real-time fraud detection pipeline built on **AWS**, designed to simulate real-world scenarios by ingesting live social media data from Bluesky.
 
-> **Note:** This repository includes only the Terraform and Terragrunt code for provisioning the infrastructure. The actual data processing scripts, SageMaker inference logic, and image automation pipeline are located in a **separate repository** .
+> **Note:** This repository includes only the Terraform and Terragrunt code for provisioning the infrastructure. The actual data processing scripts, SageMaker inference logic, and image automation pipeline are located in a separate repository .
 
 ---
 
 ## Project Highlights
 
 - **Real-Time Fraud Detection:**  
-  Utilizes **Amazon Kinesis Data Streams** and **AWS Lambda** for ingesting and transforming social media text, images, and video data in real-time.
+  Utilizes Amazon Kinesis Data Streams and AWS Lambda for ingesting and transforming social media text, images, and video data in real-time.
 
 - **Machine Learning Inference:**  
-  Streams are routed to **Amazon SageMaker** models for live inference, detecting fraudulent patterns with sub-second latency — supporting up to **3,000 records per minute**.
+  Streams are routed to Amazon SageMaker models for live inference, detecting fraudulent patterns with sub-second latency — supporting up to 3,000 records per minute.
 
 - **Data Persistence and Offline Analysis:**  
-  Processed results and media assets are delivered to **Amazon S3** via **Kinesis Firehose** in Parquet format for long-term storage and batch analytics.
+  Processed results and media assets are delivered to S3 in Parquet format for long-term storage and batch analytics.
 
 - **Monitoring and Observability:**  
-  **Amazon CloudWatch** is used to track real-time metrics, monitor pipeline health, and visualize dashboards for operational transparency.
+  Track real-time metrics, monitor pipeline health, and visualize dashboards for operational transparency.
 
 - **Infrastructure Automation:**  
-  Entire AWS infrastructure is provisioned and managed using **Terraform** and **Terragrunt**, with **GitHub Actions** enabling CI/CD pipelines for consistent, reproducible deployments.
+  Entire AWS infrastructure is provisioned and managed using Terraform and Terragrunt, with GitHub Actions enabling CI/CD pipelines for consistent, reproducible deployments.
 
 ---
 
@@ -52,18 +52,11 @@ While GitHub Actions provides masking capabilities, logs can still unintentional
 
 ---
 
-## Decoupled Design: Infrastructure vs. Business Logic
+## Decoupled Design: Infrastructure vs. Application Logic
 
-This repo contains **only the infrastructure code**.
+This repo contains only the infrastructure code, while the application code is stored in a separate repository.
 
-> The **actual business logic** (i.e., fraud detection algorithms, media processing scripts, and Dockerized model runners) is stored in a **separate private repository**.
-
-### Why Decouple?
-
-- **Security:** Keeps sensitive model code and secrets isolated from public view.
-- **Testability:** Allows separate development/testing of infrastructure vs. ML logic.
-- **Reusability:** Makes infrastructure reusable across other use cases or teams.
-- **CI/CD Simplicity:** Easier to build targeted deployment workflows for infra vs. app code.
+I chose to separate the infrastructure code from the application logic because it’s a best practice that improves maintainability and security. Keeping them apart makes testing and development simpler by isolating responsibilities, and it also allows the infrastructure to be reused across different projects
 
 ---
 
